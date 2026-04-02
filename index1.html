@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎉 Happy Birthday! 🎂</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&amp;display=swap');
+        
+        :root {
+            --tw-color-primary: #ec4899;
+        }
+        
+        * {
+            transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 150ms;
+        }
+        
+        body {
+            font-family: 'Poppins', system-ui, sans-serif;
+        }
+        
+        .hero-bg {
+            background: linear-gradient(135deg, #a855f7 0%, #ec4899 25%, #f43f5e 50%, #f59e0b 75%, #eab308 100%);
+            animation: gradientShift 15s ease infinite;
+            background-size: 400% 400%;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* NEW: Rainbow title animation */
+        .title {
+            animation: titlePop 2s ease infinite alternate;
+            text-shadow: 
+                0 0 20px rgb(236 72 153),
+                0 0 40px rgb(236 72 153);
+        }
+        
+        @keyframes titlePop {
+            from { transform: scale(1); }
+            to { transform: scale(1.05); }
+        }
+        
+        /* NEW CUSTOM: Letter bounce animation (used for HAPPY BIRTHDAY) */
+        @keyframes letterBounce {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-18px) rotate(8deg); }
+        }
+        
+        .letter {
+            display: inline-block;
+            animation: letterBounce 1.2s ease infinite alternate;
+        }
+        
+        /* NEW CUSTOM: Dripping icing on cake */
+        @keyframes drip {
+            0% {
+                transform: translateY(0) scaleY(1);
+                opacity: 0.9;
+            }
+            100% {
+                transform: translateY(110px) scaleY(0.6);
+                opacity: 0;
+            }
+        }
+        
+        .drip {
+            animation: drip 2.8s infinite cubic-bezier(0.4, 0, 1, 1);
+            background: linear-gradient(transparent, #ec4899);
+            border-radius: 50%;
+            box-shadow: 0 4px 12px -2px #ec4899;
+        }
+        
+        /* NEW CUSTOM: Floating hearts */
+        .heart {
+            position: absolute;
+            font-size: 28px;
+            animation: heartFloat linear infinite;
+            z-index: 5;
+            filter: drop-shadow(0 10px 15px rgba(236, 72, 153, 0.4));
+        }
+        
+        @keyframes heartFloat {
+            0% {
+                transform: translateY(110vh) rotate(0deg) scale(0.6);
+            }
+            100% {
+                transform: translateY(-120vh) rotate(720deg) scale(1.2);
+            }
+        }
+        
+        /* Floating Balloons */
+        .balloon {
+            position: absolute;
+            width: 60px;
+            height: 80px;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            animation: floatBalloon 12s linear infinite;
+            z-index: 10;
+            cursor: pointer;
+        }
+        
+        @keyframes floatBalloon {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+            }
+            100% {
+                transform: translateY(-120vh) rotate(720deg);
+            }
+        }
+        
+        .balloon::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            width: 4px;
+            height: 40px;
+            background: linear-gradient(transparent, #fff);
+            transform: translateX(-50%);
+        }
+        
+        /* Cake - enhanced with breathing + drip support */
+        .cake-container {
+            position: relative;
+            width: 320px;
+            margin: 0 auto;
+            animation: cakeBreath 4s ease infinite;
+        }
+        
+        @keyframes cakeBreath {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.04); }
+        }
+        
+        .cake {
+            position: relative;
+            width: 320px;
+            height: 160px;
+            background: linear-gradient(#f59e0b, #ea580c);
+            border-radius: 20px 20px 8px 8px;
+            box-shadow: 0 25px 30px -10px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+        
+        .cake::before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 240px;
+            height: 80px;
+            background: linear-gradient(#ec4899, #db2777);
+            border-radius: 50%;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Cake layers */
+        .layer {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(#ec4899, #db2777);
+            border-radius: 10px;
+        }
+        
+        .layer1 { width: 280px; height: 50px; bottom: 0; }
+        .layer2 { width: 240px; height: 45px; bottom: 50px; }
+        .layer3 { width: 200px; height: 40px; bottom: 95px; }
+        
+        /* Icing */
+        .icing {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: linear-gradient(90deg, #a78bfa 0%, #c026d3 50%, #a78bfa 100%);
+            border-radius: 20px 20px 0 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            overflow: hidden;
+        }
+        
+        .icing::before {
+            content: '🍒';
+            font-size: 22px;
+            animation: bob 1.5s infinite;
+        }
+        
+        .candle {
+            position: absolute;
+            bottom: 125px;
+            width: 14px;
+            height: 70px;
+            background: linear-gradient(#f1f5f9, #e2e8f0);
+            border-radius: 4px 4px 2px 2px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            cursor: pointer;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
+        
+        .flame {
+            width: 18px;
+            height: 28px;
+            background: linear-gradient(180deg, #facc15 10%, #f59e0b 40%, #ec4899 80%);
+            border-radius: 50% 50% 20% 20%;
+            animation: flicker 0.8s infinite alternate;
+            box-shadow: 
+                0 0 12px #facc15,
+                0 0 24px #ec4899;
+            position: relative;
+        }
+        
+        .flame::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 4px;
+            width: 10px;
+            height: 12px;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.4;
+        }
+        
+        @keyframes flicker {
+            0% { transform: scaleY(1) rotate(-4deg); }
+            100% { transform: scaleY(1.15) rotate(4deg); }
+        }
+        
+        .extinguished .flame {
+            display: none;
+        }
+        
+        /* Confetti Canvas */
+        #confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 99999;
+        }
+        
+        /* Message Card Flip - enhanced with scale bounce */
+        .wish-card {
+            perspective: 1000px;
+        }
+        
+        .wish-card-inner {
+            transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform-style: preserve-3d;
+        }
+        
+        .wish-card:hover .wish-card-inner {
+            transform: rotateY(180deg) scale(1.05);
+        }
+        
+        .wish-card-front, .wish-card-back {
+            backface-visibility: hidden;
+        }
+        
+        .wish-card-back {
+            transform: rotateY(180deg);
+        }
+        
+        /* Sparkle */
+        .sparkle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 12px #fff;
+            animation: sparkleAnim 1.5s linear infinite;
+        }
+        
+        @keyframes sparkleAnim {
+            0%, 100% { opacity: 0; transform: scale(0.4); }
+            50% { opacity: 1; transform: scale(1.4); }
+        }
+        
+        /* NEW: Button pulse glow */
+        .magic-btn {
+            animation: buttonPulse 2s ease infinite;
+        }
+        
+        @keyframes buttonPulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(236, 72, 153, 0.4); }
+            70% { box-shadow: 0 0 0 25px rgba(236, 72, 153, 0); }
+        }
+    </style>
+</head>
+<body class="min-h-screen overflow-x-hidden">
+    <!-- Floating Balloons Container -->
+    <div id="balloons-container" class="fixed inset-0 pointer-events-none z-10"></div>
+    
+    <!-- NEW: Floating Hearts Container -->
+    <div id="hearts-container" class="fixed inset-0 pointer-events-none z-5"></div>
+
+    <!-- Navbar -->
+    <nav class="bg-white/10 backdrop-blur-lg border-b border-white/20 text-white sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-8 py-5 flex items-center justify-between">
+            <div class="flex items-center gap-3 text-3xl font-bold">
+                🎂 
+                <span class="title">BIRTHDAY MAGIC</span>
+            </div>
+            
+            <div class="flex items-center gap-8 text-lg font-medium">
+                <a onclick="launchConfetti()" class="hover:scale-110 flex items-center gap-2 cursor-pointer">
+                    <span>✨ Confetti</span>
+                </a>
+                <a onclick="blowAllCandles()" class="hover:scale-110 flex items-center gap-2 cursor-pointer">
+                    <span>🕯️ Blow Candles</span>
+                </a>
+                <div class="flex items-center gap-2 bg-white/20 hover:bg-white/30 px-6 py-2 rounded-3xl cursor-pointer" onclick="toggleMusic()">
+                    <span id="music-btn">🎵 Play Song</span>
+                </div>
+                <button onclick="shareWebsite()" 
+                        class="bg-white text-pink-600 hover:bg-amber-300 font-semibold px-8 py-3 rounded-3xl flex items-center gap-2 shadow-xl">
+                    <span>Share the Joy 💌</span>
+                </button>
+            </div>
+            
+            <!-- Name Input -->
+            <div class="flex items-center gap-3">
+                <span class="text-white/90 font-medium">For</span>
+                <input id="name-input" 
+                       type="text" 
+                       value="Manish"
+                       oninput="updateName()"
+                       class="bg-white/20 text-white placeholder:text-white/70 font-semibold text-xl px-6 py-3 rounded-3xl outline-none focus:ring-4 focus:ring-white/50 w-48 text-center">
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="hero-bg min-h-screen flex items-center relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            
+            <!-- Left Text -->
+            <div class="text-white text-center lg:text-left">
+                <div class="inline-flex items-center gap-3 bg-white/20 text-white text-sm font-medium px-6 py-3 rounded-3xl mb-6">
+                    🎉 TODAY IS YOUR DAY 🎉
+                </div>
+                
+                <!-- Custom animated title -->
+                <h2 id="main-title" class="title text-7xl md:text-8xl font-bold leading-none mb-6 flex flex-wrap justify-center lg:justify-start gap-x-2">
+                    HAPPY BIRTHDAY
+                </h2>
+                
+                <div class="flex items-baseline justify-center lg:justify-start gap-4 mb-8">
+                    <span class="text-6xl md:text-7xl font-light">to</span>
+                    <span id="name-display" class="text-7xl md:text-8xl font-bold tracking-wider drop-shadow-2xl">MANISH</span>
+                    <span class="text-6xl md:text-7xl">🎂</span>
+                </div>
+                
+                <p class="text-3xl md:text-4xl font-light mb-12 max-w-md mx-auto lg:mx-0">
+                    May your day be filled with endless joy, laughter &amp; cake!
+                </p>
+                
+                <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
+                    <button onclick="launchConfetti()" 
+                            class="magic-btn bg-white text-pink-600 hover:bg-amber-300 text-2xl font-bold px-12 py-6 rounded-3xl flex items-center gap-4 shadow-2xl hover:shadow-3xl">
+                        <span>EXPLODE THE CONFETTI!</span>
+                        <span class="text-4xl">🎊</span>
+                    </button>
+                    
+                    <button onclick="makeWish()" 
+                            class="border-4 border-white text-white hover:bg-white hover:text-pink-600 text-2xl font-bold px-12 py-6 rounded-3xl flex items-center gap-4">
+                        <span>MAKE A WISH ✨</span>
+                    </button>
+                </div>
+                
+                <div class="mt-12 flex items-center justify-center lg:justify-start gap-8 text-sm">
+                    <div class="flex items-center gap-2">
+                        <div class="w-3 h-3 bg-yellow-300 rounded-full animate-pulse"></div>
+                        LIVE CELEBRATION
+                    </div>
+                    <div>❤️ Loved by friends &amp; family</div>
+                    <div class="text-amber-300">🌟 Now with custom animations!</div>
+                </div>
+            </div>
+            
+            <!-- Right Visual -->
+            <div class="relative flex justify-center">
+                <div class="cake-container">
+                    <div id="cake" class="cake">
+                        <!-- Layers -->
+                        <div class="layer layer1"></div>
+                        <div class="layer layer2"></div>
+                        <div class="layer layer3"></div>
+                        
+                        <!-- NEW: Dripping icing elements -->
+                        <div class="absolute bottom-0 left-[22%] w-4 h-10 drip" style="animation-delay: 0s;"></div>
+                        <div class="absolute bottom-0 left-[38%] w-3 h-12 drip" style="animation-delay: 600ms;"></div>
+                        <div class="absolute bottom-0 left-[55%] w-5 h-9 drip" style="animation-delay: 1200ms;"></div>
+                        <div class="absolute bottom-0 left-[72%] w-3 h-11 drip" style="animation-delay: 300ms;"></div>
+                        
+                        <!-- Icing -->
+                        <div class="icing">
+                            <div class="text-2xl">🍒</div>
+                            <div class="text-2xl">🍓</div>
+                            <div class="text-2xl">🍒</div>
+                        </div>
+                        
+                        <!-- Candles Container -->
+                        <div id="candles" class="absolute bottom-0 left-0 right-0 flex justify-center gap-8 px-8">
+                            <!-- Candles added by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Sparkles around cake -->
+                <div id="sparkles" class="absolute inset-0 pointer-events-none"></div>
+            </div>
+        </div>
+        
+        <!-- Scroll prompt -->
+        <div class="absolute bottom-10 left-1/2 flex flex-col items-center text-white/70 text-sm">
+            <div class="mb-2 animate-bounce">↓ Scroll for more magic ↓</div>
+            <div class="text-xs">Interactive birthday experience with custom animations</div>
+        </div>
+    </header>
+
+    <!-- WISHES SECTION -->
+    <section class="py-24 bg-gradient-to-b from-white to-amber-50">
+        <div class="max-w-7xl mx-auto px-8">
+            <h2 class="text-center text-5xl font-bold text-pink-600 mb-4">Choose Your Special Wish</h2>
+            <p class="text-center text-xl text-gray-600 mb-16">Click any card to flip it and reveal the magic inside</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Wish Card 1 -->
+                <div onclick="this.classList.toggle('flipped')" class="wish-card cursor-pointer h-80">
+                    <div class="wish-card-inner relative h-full w-full rounded-3xl shadow-2xl" style="transform-style: preserve-3d;">
+                        <div class="wish-card-front absolute inset-0 bg-white rounded-3xl p-8 flex flex-col justify-center items-center text-center">
+                            <div class="text-6xl mb-6">🌟</div>
+                            <h3 class="text-3xl font-semibold text-pink-500">May all your dreams come true!</h3>
+                            <p class="mt-8 text-gray-500">Wishing you a year filled with success, love, and happiness.</p>
+                            <div class="mt-auto text-xs text-pink-400">— Flip me —</div>
+                        </div>
+                        <div class="wish-card-back absolute inset-0 bg-gradient-to-br from-pink-500 to-amber-400 text-white rounded-3xl p-8 flex flex-col justify-center items-center text-center rotate-y-180">
+                            <div class="text-7xl mb-8">🎉</div>
+                            <p class="text-2xl leading-relaxed">You are a star! Keep shining brighter every single day.</p>
+                            <div class="text-xs mt-auto opacity-75">Made with ❤️ just for you</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Wish Card 2 -->
+                <div onclick="this.classList.toggle('flipped')" class="wish-card cursor-pointer h-80">
+                    <div class="wish-card-inner relative h-full w-full rounded-3xl shadow-2xl" style="transform-style: preserve-3d;">
+                        <div class="wish-card-front absolute inset-0 bg-white rounded-3xl p-8 flex flex-col justify-center items-center text-center">
+                            <div class="text-6xl mb-6">🎂</div>
+                            <h3 class="text-3xl font-semibold text-amber-500">Eat cake, be happy!</h3>
+                            <p class="mt-8 text-gray-500">Life is short. Eat the cake first and celebrate every moment.</p>
+                            <div class="mt-auto text-xs text-amber-400">— Flip me —</div>
+                        </div>
+                        <div class="wish-card-back absolute inset-0 bg-gradient-to-br from-amber-400 to-yellow-400 text-white rounded-3xl p-8 flex flex-col justify-center items-center text-center rotate-y-180">
+                            <div class="text-7xl mb-8">🍰</div>
+                            <p class="text-2xl leading-relaxed">Let your birthday be the start of an amazing new chapter!</p>
+                            <div class="text-xs mt-auto opacity-75">Made with ❤️ just for you</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Wish Card 3 -->
+                <div onclick="this.classList.toggle('flipped')" class="wish-card cursor-pointer h-80">
+                    <div class="wish-card-inner relative h-full w-full rounded-3xl shadow-2xl" style="transform-style: preserve-3d;">
+                        <div class="wish-card-front absolute inset-0 bg-white rounded-3xl p-8 flex flex-col justify-center items-center text-center">
+                            <div class="text-6xl mb-6">🚀</div>
+                            <h3 class="text-3xl font-semibold text-purple-500">To infinity &amp; beyond!</h3>
+                            <p class="mt-8 text-gray-500">Your future is brighter than the candles on your cake.</p>
+                            <div class="mt-auto text-xs text-purple-400">— Flip me —</div>
+                        </div>
+                        <div class="wish-card-back absolute inset-0 bg-gradient-to-br from-purple-500 to-pink-500 text-white rounded-3xl p-8 flex flex-col justify-center items-center text-center rotate-y-180">
+                            <div class="text-7xl mb-8">💫</div>
+                            <p class="text-2xl leading-relaxed">You deserve the world and everything magical in it.</p>
+                            <div class="text-xs mt-auto opacity-75">Made with ❤️ just for you</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FINAL CELEBRATION -->
+    <section class="py-20 bg-black text-white relative overflow-hidden">
+        <div class="max-w-4xl mx-auto text-center px-8">
+            <h2 class="text-6xl font-bold mb-8">Ready for the grand finale?</h2>
+            <p class="text-2xl mb-12 text-white/70">Click below to unleash 1000+ pieces of confetti and send your birthday wishes into the sky!</p>
+            
+            <button onclick="megaConfetti()" 
+                    class="magic-btn mx-auto flex items-center justify-center gap-6 text-4xl font-bold px-16 py-8 bg-gradient-to-r from-pink-500 to-yellow-400 rounded-3xl hover:scale-110 shadow-2xl">
+                <span>LAUNCH THE ULTIMATE CELEBRATION</span>
+                <span class="text-6xl">🎊🎉🎈</span>
+            </button>
+            
+            <div class="mt-16 text-sm flex items-center justify-center gap-8 text-white/60">
+                <div>❤️ From your friends</div>
+                <div class="flex -space-x-4">
+                    <div class="w-8 h-8 bg-pink-400 rounded-2xl flex items-center justify-center ring-2 ring-black text-xs">🎂</div>
+                    <div class="w-8 h-8 bg-amber-400 rounded-2xl flex items-center justify-center ring-2 ring-black text-xs">🎈</div>
+                    <div class="w-8 h-8 bg-yellow-400 rounded-2xl flex items-center justify-center ring-2 ring-black text-xs">✨</div>
+                </div>
+                <div>Made just for you</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-white py-8 text-center text-gray-400 text-sm">
+        Built with ❤️ as an interactive birthday website • Now loaded with custom animations!
+        <div class="mt-3 text-xs">Made interactive with Tailwind + pure CSS magic + JavaScript confetti</div>
+    </footer>
+
+    <script>
+        // Tailwind initialization
+        function initializeTailwind() {
+            return {
+                config(userConfig = {}) {
+                    return {
+                        content: [],
+                        theme: {
+                            extend: {},
+                        },
+                        plugins: [],
+                        ...userConfig,
+                    }
+                },
+                theme: {
+                    extend: {},
+                },
+            }
+        }
+        
+        // Update name in real-time
+        function updateName() {
+            const input = document.getElementById('name-input').value.trim() || "Friend"
+            document.getElementById('name-display').textContent = input.toUpperCase()
+            
+            // Bonus sparkle
+            if (Math.random() > 0.7) createSparkles(8)
+        }
+        
+        // Create floating balloons
+        function createBalloons(count = 18) {
+            const container = document.getElementById('balloons-container')
+            const colors = ['#ec4899', '#a78bfa', '#f59e0b', '#22d3ee', '#f43f5e', '#eab308']
+            const emojis = ['🎈', '🎉', '🪅', '💖', '⭐']
+            
+            for (let i = 0; i < count; i++) {
+                const balloon = document.createElement('div')
+                balloon.className = 'balloon'
+                
+                balloon.style.left = Math.random() * 100 + 'vw'
+                balloon.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)]
+                balloon.style.animationDuration = (Math.random() * 8 + 9) + 's'
+                balloon.style.animationDelay = '-' + (Math.random() * 15) + 's'
+                balloon.style.transform = `scale(${0.7 + Math.random() * 0.6})`
+                balloon.style.opacity = 0.85 + Math.random() * 0.15
+                
+                balloon.innerHTML = emojis[Math.floor(Math.random() * emojis.length)]
+                
+                balloon.addEventListener('click', function (e) {
+                    e.stopImmediatePropagation()
+                    popBalloon(this)
+                })
+                
+                container.appendChild(balloon)
+                
+                setTimeout(() => {
+                    if (balloon.parentNode) balloon.parentNode.removeChild(balloon)
+                }, 25000)
+            }
+        }
+        
+        // NEW: Create floating hearts (custom animation)
+        function createHearts(count = 14) {
+            const container = document.getElementById('hearts-container')
+            const colors = ['#ec4899', '#f43f5e', '#db2777']
+            
+            for (let i = 0; i < count; i++) {
+                const heart = document.createElement('div')
+                heart.className = 'heart'
+                heart.textContent = '❤️'
+                
+                heart.style.left = Math.random() * 100 + 'vw'
+                heart.style.animationDuration = (Math.random() * 9 + 11) + 's'
+                heart.style.animationDelay = '-' + (Math.random() * 18) + 's'
+                heart.style.opacity = 0.7 + Math.random() * 0.3
+                heart.style.transform = `scale(${0.8 + Math.random()})`
+                heart.style.color = colors[Math.floor(Math.random() * colors.length)]
+                
+                // Random horizontal drift
+                heart.style.setProperty('--drift', (Math.random() * 40 - 20) + 'px')
+                heart.style.animation = `heartFloat ${heart.style.animationDuration} linear infinite`
+                
+                container.appendChild(heart)
+                
+                setTimeout(() => {
+                    if (heart.parentNode) heart.parentNode.removeChild(heart)
+                }, 30000)
+            }
+        }
+        
+        function popBalloon(balloon) {
+            const rect = balloon.getBoundingClientRect()
+            miniConfettiBurst(rect.left + rect.width / 2, rect.top + rect.height / 2)
+            
+            balloon.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 1, 1)'
+            balloon.style.transform = 'scale(0.2) rotate(360deg)'
+            balloon.style.opacity = '0'
+            
+            setTimeout(() => {
+                if (balloon.parentNode) balloon.parentNode.removeChild(balloon)
+            }, 400)
+        }
+        
+        // Create interactive cake candles
+        function createCandles() {
+            const container = document.getElementById('candles')
+            const candleCount = 7
+            
+            for (let i = 0; i < candleCount; i++) {
+                const candleHTML = `
+                <div class="candle group" style="left: ${20 + i * 10}%;">
+                    <div class="flame"></div>
+                </div>`
+                container.innerHTML += candleHTML
+            }
+            
+            // NEW CUSTOM: Light candles one by one on load with delay
+            setTimeout(() => {
+                const candles = document.querySelectorAll('.candle')
+                candles.forEach((candle, index) => {
+                    setTimeout(() => {
+                        candle.style.transitionDuration = '400ms'
+                        candle.style.transform = 'scale(1.15)'
+                        setTimeout(() => candle.style.transform = 'scale(1)', 200)
+                    }, index * 180)
+                })
+            }, 1200)
+            
+            // Click listeners
+            setTimeout(() => {
+                document.querySelectorAll('.candle').forEach((candle) => {
+                    candle.addEventListener('click', () => {
+                        extinguishCandle(candle)
+                        if (Math.random() > 0.6) {
+                            const rect = candle.getBoundingClientRect()
+                            miniConfettiBurst(rect.left + 8, rect.top - 30)
+                        }
+                    })
+                })
+            }, 100)
+        }
+        
+        function extinguishCandle(candle) {
+            candle.classList.add('extinguished')
+            
+            const smoke = document.createElement('div')
+            smoke.textContent = '💨'
+            smoke.style.position = 'absolute'
+            smoke.style.fontSize = '22px'
+            smoke.style.top = '-30px'
+            smoke.style.left = '50%'
+            smoke.style.transform = 'translateX(-50%)'
+            smoke.style.opacity = '0'
+            candle.appendChild(smoke)
+            
+            setTimeout(() => {
+                smoke.style.transition = 'all 1.2s ease'
+                smoke.style.transform = 'translateX(-50%) translateY(-60px)'
+                smoke.style.opacity = '0.9'
+            }, 10)
+            
+            setTimeout(() => {
+                if (smoke.parentNode) smoke.parentNode.removeChild(smoke)
+            }, 1500)
+            
+            const remaining = document.querySelectorAll('.candle:not(.extinguished)').length
+            if (remaining === 0) {
+                setTimeout(() => showAllCandlesBlownMessage(), 800)
+            }
+        }
+        
+        function blowAllCandles() {
+            const candles = document.querySelectorAll('.candle')
+            let delay = 0
+            candles.forEach(candle => {
+                if (!candle.classList.contains('extinguished')) {
+                    setTimeout(() => extinguishCandle(candle), delay)
+                    delay += 120
+                }
+            })
+        }
+        
+        function showAllCandlesBlownMessage() {
+            const message = document.createElement('div')
+            message.className = 'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white text-pink-600 text-4xl font-bold px-16 py-8 rounded-3xl shadow-2xl z-[99999] flex items-center gap-6'
+            message.innerHTML = `
+                🎂 WISH GRANTED! 🎂<br>
+                <span class="text-6xl">✨</span>
+                Make your secret wish now!
+            `
+            document.body.appendChild(message)
+            
+            setTimeout(() => {
+                message.style.transitionDuration = '600ms'
+                message.style.opacity = '0'
+                message.style.transform = 'translate(-50%, -70%) scale(0.9)'
+                setTimeout(() => message.remove(), 600)
+            }, 4200)
+            
+            launchConfetti()
+        }
+        
+        // Confetti engine (unchanged but called more)
+        let confettiCanvas = null
+        
+        function createConfettiCanvas() {
+            if (confettiCanvas) return confettiCanvas
+            confettiCanvas = document.createElement('canvas')
+            confettiCanvas.id = 'confetti-canvas'
+            document.body.appendChild(confettiCanvas)
+            return confettiCanvas
+        }
+        
+        function launchConfetti() {
+            const canvas = createConfettiCanvas()
+            const ctx = canvas.getContext('2d')
+            
+            canvas.width = window.innerWidth
+            canvas.height = window.innerHeight
+            
+            const particles = []
+            const colors = ['#ec4899', '#a78bfa', '#f59e0b', '#22d3ee', '#f43f5e', '#eab308', '#c026d3']
+            
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * canvas.width
+                    this.y = Math.random() * canvas.height * 0.3 - 50
+                    this.size = Math.random() * 14 + 6
+                    this.speedX = Math.random() * 6 - 3
+                    this.speedY = Math.random() * 8 + 6
+                    this.color = colors[Math.floor(Math.random() * colors.length)]
+                    this.angle = Math.random() * 360
+                    this.spinSpeed = Math.random() * 0.12 + 0.04
+                    this.shape = Math.random() > 0.5 ? 'square' : 'circle'
+                }
+                
+                update() {
+                    this.x += this.speedX
+                    this.y += this.speedY
+                    this.speedY += 0.18
+                    this.angle += this.spinSpeed
+                    this.size *= 0.995
+                }
+                
+                draw() {
+                    ctx.save()
+                    ctx.translate(this.x, this.y)
+                    ctx.rotate(this.angle * Math.PI / 180)
+                    ctx.fillStyle = this.color
+                    
+                    if (this.shape === 'square') {
+                        ctx.fillRect(-this.size / 2, -this.size / 2, this.size, this.size)
+                    } else {
+                        ctx.beginPath()
+                        ctx.arc(0, 0, this.size / 2, 0, Math.PI * 2)
+                        ctx.fill()
+                    }
+                    ctx.restore()
+                }
+            }
+            
+            for (let i = 0; i < 420; i++) particles.push(new Particle())
+            
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height)
+                
+                for (let i = particles.length - 1; i >= 0; i--) {
+                    const p = particles[i]
+                    p.update()
+                    p.draw()
+                    
+                    if (p.size < 0.6 || p.y > canvas.height + 50) {
+                        particles.splice(i, 1)
+                    }
+                }
+                
+                if (particles.length > 0) {
+                    requestAnimationFrame(animate)
+                } else {
+                    setTimeout(() => {
+                        if (confettiCanvas && confettiCanvas.parentNode) {
+                            confettiCanvas.parentNode.removeChild(confettiCanvas)
+                            confettiCanvas = null
+                        }
+                    }, 800)
+                }
+            }
+            
+            animate()
+            createBalloons(6)
+            createHearts(5) // extra hearts on big confetti
+        }
+        
+        function miniConfettiBurst(x, y) {
+            const canvas = document.createElement('canvas')
+            canvas.style.position = 'fixed'
+            canvas.style.left = x + 'px'
+            canvas.style.top = y + 'px'
+            canvas.style.width = '300px'
+            canvas.style.height = '300px'
+            canvas.style.pointerEvents = 'none'
+            canvas.style.zIndex = '99999'
+            document.body.appendChild(canvas)
+            
+            const ctx = canvas.getContext('2d')
+            canvas.width = 300
+            canvas.height = 300
+            
+            const particles = []
+            const colors = ['#ec4899', '#f59e0b', '#22d3ee']
+            
+            class MiniParticle {
+                constructor() {
+                    this.x = 150
+                    this.y = 150
+                    this.size = Math.random() * 9 + 4
+                    this.speedX = Math.random() * 9 - 4.5
+                    this.speedY = Math.random() * 9 - 7
+                    this.color = colors[Math.floor(Math.random() * colors.length)]
+                }
+                
+                update() {
+                    this.x += this.speedX
+                    this.y += this.speedY
+                    this.speedY += 0.4
+                    this.size *= 0.96
+                }
+                
+                draw() {
+                    ctx.fillStyle = this.color
+                    ctx.fillRect(this.x, this.y, this.size, this.size)
+                }
+            }
+            
+            for (let i = 0; i < 65; i++) particles.push(new MiniParticle())
+            
+            let frame = 0
+            function miniAnimate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height)
+                frame++
+                
+                for (let i = particles.length - 1; i >= 0; i--) {
+                    const p = particles[i]
+                    p.update()
+                    p.draw()
+                    if (p.size < 0.8) particles.splice(i, 1)
+                }
+                
+                if (particles.length > 0 && frame < 90) {
+                    requestAnimationFrame(miniAnimate)
+                } else {
+                    canvas.remove()
+                }
+            }
+            
+            miniAnimate()
+        }
+        
+        function megaConfetti() {
+            launchConfetti()
+            setTimeout(() => launchConfetti(), 180)
+            setTimeout(() => launchConfetti(), 420)
+            createBalloons(25)
+            createHearts(18)
+            createSparkles(60)
+        }
+        
+        function createSparkles(count) {
+            const container = document.getElementById('sparkles')
+            
+            for (let i = 0; i < count; i++) {
+                const sparkle = document.createElement('div')
+                sparkle.className = 'sparkle'
+                
+                const left = 30 + Math.random() * 40
+                sparkle.style.left = left + '%'
+                sparkle.style.top = (20 + Math.random() * 60) + '%'
+                
+                sparkle.style.animationDelay = Math.random() * 800 + 'ms'
+                sparkle.style.animationDuration = (800 + Math.random() * 800) + 'ms'
+                
+                container.appendChild(sparkle)
+                
+                setTimeout(() => {
+                    if (sparkle.parentNode) sparkle.parentNode.removeChild(sparkle)
+                }, 2500)
+            }
+        }
+        
+        // Fake music toggle
+        let musicPlaying = false
+        function toggleMusic() {
+            musicPlaying = !musicPlaying
+            const btn = document.getElementById('music-btn')
+            
+            if (musicPlaying) {
+                btn.innerHTML = `🎵 <span class="text-green-400">♪ Now playing Happy Birthday ♪</span>`
+                btn.classList.add('text-green-300')
+                
+                const interval = setInterval(() => {
+                    if (!musicPlaying) {
+                        clearInterval(interval)
+                        return
+                    }
+                    createSparkles(4)
+                    createHearts(3)
+                }, 420)
+            } else {
+                btn.innerHTML = `🎵 Play Song`
+                btn.classList.remove('text-green-300')
+            }
+        }
+        
+        function makeWish() {
+            const wishes = [
+                "I wish for endless happiness and success! ✨",
+                "May every day be as sweet as this cake! 🍰",
+                "Health, wealth, and laughter forever! 🎉",
+                "You are going to have the best year ever! 🚀"
+            ]
+            
+            const randomWish = wishes[Math.floor(Math.random() * wishes.length)]
+            
+            const wishBox = document.createElement('div')
+            wishBox.style.cssText = `position:fixed; top:30%; left:50%; transform:translate(-50%, -50%); background:linear-gradient(#fff,#fdf4ff); color:#c026d3; padding:32px 48px; border-radius:9999px; box-shadow:0 25px 50px -12px rgb(236 72 153); font-size:28px; font-weight:700; z-index:999999; text-align:center; max-width:420px`
+            wishBox.innerHTML = `🌟 Your wish: <br><span class="block mt-4 text-2xl">${randomWish}</span>`
+            document.body.appendChild(wishBox)
+            
+            launchConfetti()
+            
+            setTimeout(() => {
+                wishBox.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 1, 1), opacity 0.6s'
+                wishBox.style.transform = 'translate(-50%, -120%)'
+                wishBox.style.opacity = '0'
+                setTimeout(() => wishBox.remove(), 800)
+            }, 3200)
+        }
+        
+        function shareWebsite() {
+            const message = `🎉 Just experienced an awesome interactive birthday website for ${document.getElementById('name-input').value}! Want one too?`
+            
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Happy Birthday Website',
+                    text: message,
+                    url: window.location.href
+                })
+            } else {
+                navigator.clipboard.writeText(message + '\n\nCopy this link: ' + window.location.href)
+                const toast = document.createElement('div')
+                toast.textContent = '🔗 Link copied to clipboard!'
+                toast.style.cssText = 'position:fixed; bottom:30px; left:50%; transform:translateX(-50%); background:#ec4899; color:white; padding:16px 28px; border-radius:9999px; box-shadow:25px; z-index:999999'
+                document.body.appendChild(toast)
+                setTimeout(() => toast.remove(), 2800)
+            }
+            
+            launchConfetti()
+        }
+        
+        // NEW: Animate title letters with custom bounce
+        function animateTitleLetters() {
+            const title = document.getElementById('main-title')
+            const originalText = title.textContent.trim()
+            title.innerHTML = ''
+            
+            originalText.split('').forEach((char, index) => {
+                const span = document.createElement('span')
+                span.textContent = char === ' ' ? '\u00A0' : char
+                span.classList.add('letter')
+                // Stagger the animation
+                span.style.animationDelay = `${index * 60}ms`
+                // Random slight rotation for extra fun
+                if (Math.random() > 0.7) span.style.transform = `rotate(${Math.random() * 12 - 6}deg)`
+                title.appendChild(span)
+            })
+        }
+        
+        // MAIN INITIALIZATION
+        window.onload = function () {
+            initializeTailwind()
+            
+            // Custom animations start here
+            animateTitleLetters()           // NEW: Letter bounce
+            createBalloons(18)              // Balloons
+            createHearts(14)                // NEW: Hearts floating
+            createCandles()                 // Candles with lighting sequence
+            
+            // Sparkles loop
+            setInterval(() => {
+                if (Math.random() > 0.5) createSparkles(12)
+            }, 2200)
+            
+            // Keyboard fun
+            document.addEventListener('keydown', function (e) {
+                if (e.key.toLowerCase() === 'c') launchConfetti()
+                if (e.key.toLowerCase() === 'h') createHearts(10)
+            })
+            
+            console.log('%c🎂 Birthday website loaded with CUSTOM ANIMATIONS! Enjoy Manish!', 'color:#ec4899; font-family:monospace; font-size:15px')
+        }
+    </script>
+</body>
+</html>
